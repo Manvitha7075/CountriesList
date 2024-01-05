@@ -1,6 +1,5 @@
 package com.example.countrieslist.views
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val repository = CountriesRepositoryImpl()
         val provider = CountryViewModelProviderFactory(repository)
         viewModel = ViewModelProvider(this,provider).get(CountriesViewModel::class.java)
-        viewModel.countryPage.observe(this) { response ->
+        viewModel.countryLiveData.observe(this) { response ->
             when (response) {
                 is ApiState.Success -> {
                     progressBar.visibility = View.INVISIBLE
