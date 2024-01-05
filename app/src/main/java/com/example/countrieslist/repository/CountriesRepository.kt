@@ -1,10 +1,15 @@
 package com.example.countrieslist.repository
 
+import com.example.countrieslist.model.CountriesList
 import com.example.countrieslist.retrofit.RetrofitInstance
+import retrofit2.Response
 
-class CountriesRepository () {
+interface CountriesRepository {
+    suspend fun getCountriesList(): Response<CountriesList>
+}
 
-        suspend fun getCountriesList() = RetrofitInstance.api.getCountriesList()
+class CountriesRepositoryImpl: CountriesRepository {
 
+    override suspend fun getCountriesList() = RetrofitInstance.api.getCountriesList()
 
-    }
+ }

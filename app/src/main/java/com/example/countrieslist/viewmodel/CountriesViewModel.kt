@@ -3,7 +3,6 @@ package com.example.countrieslist.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.load.engine.Resource
 import com.example.countrieslist.model.CountriesList
 import com.example.countrieslist.repository.CountriesRepository
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +20,7 @@ class CountriesViewModel (val countriesRepository: CountriesRepository): ViewMod
     private fun getCountryData() = viewModelScope.launch(Dispatchers.IO) {
         countryPage.postValue(ApiState.Loading())
         val response = countriesRepository.getCountriesList()
-        delay(2000) // just to show progress bar in the ui
+        delay(1000) // just to show progress bar in the ui
         countryPage.postValue(handleResponse(response))
     }
 

@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.countrieslist.R
-import com.example.countrieslist.repository.CountriesRepository
+import com.example.countrieslist.repository.CountriesRepositoryImpl
 import com.example.countrieslist.viewmodel.ApiState
 import com.example.countrieslist.viewmodel.CountriesViewModel
 import com.example.countrieslist.viewmodel.CountryViewModelProviderFactory
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        val repository = CountriesRepository()
+        val repository = CountriesRepositoryImpl()
         val provider = CountryViewModelProviderFactory(repository)
         viewModel = ViewModelProvider(this,provider).get(CountriesViewModel::class.java)
         viewModel.countryPage.observe(this) { response ->
@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
                         countriesAdapter = CountriesAdapter(newsResponse)
                         recyclerView.adapter = countriesAdapter
                         Log.d("countyResponse",newsResponse.size.toString())
-                       // moviesAdapter.differ.submitList(newsResponse.items)
                     }
                 }
 
@@ -59,13 +58,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    }
-
-    fun setRecyclerView(context: Context, viewModel: CountriesViewModel){
-
-//        countriesLi.apply {
-//            adapter=moviesAdapter
-//            layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-//        }
     }
 }
