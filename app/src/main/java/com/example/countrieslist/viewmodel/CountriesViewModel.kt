@@ -17,6 +17,9 @@ class CountriesViewModel (val countriesRepository: CountriesRepository): ViewMod
         getCountryData()
     }
 
+    /**
+     * * Gets countries data from the countires API
+     */
     private fun getCountryData() = viewModelScope.launch(Dispatchers.IO) {
         countryPage.postValue(ApiState.Loading())
         val response = countriesRepository.getCountriesList()
