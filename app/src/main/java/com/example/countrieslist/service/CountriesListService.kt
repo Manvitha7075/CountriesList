@@ -1,4 +1,4 @@
-package com.example.countrieslist.retrofit
+package com.example.countrieslist.service
 
 import com.example.countrieslist.model.CountriesList
 import retrofit2.Response
