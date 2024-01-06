@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class CountriesViewModel (val countriesRepository: CountriesRepository): ViewModel() {
-    val countryPage: MutableLiveData<ApiState<CountriesList>> = MutableLiveData()
+    val countryLiveData: MutableLiveData<ApiState<CountriesList>> = MutableLiveData()
 
     init {
         getCountryData()
@@ -21,10 +21,10 @@ class CountriesViewModel (val countriesRepository: CountriesRepository): ViewMod
      * * Gets countries data from the countires API
      */
     private fun getCountryData() = viewModelScope.launch(Dispatchers.IO) {
-        countryPage.postValue(ApiState.Loading())
+        countryLiveData.postValue(ApiState.Loading())
         val response = countriesRepository.getCountriesList()
         delay(1000) // just to show progress bar in the ui
-        countryPage.postValue(handleResponse(response))
+        countryLiveData.postValue(handleResponse(response))
     }
 
     private fun handleResponse(response: Response<CountriesList>): ApiState<CountriesList> {
