@@ -3,15 +3,16 @@ package com.example.countrieslist.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.countrieslist.model.CountriesList
-import com.example.countrieslist.repository.CountriesRepository
+import com.example.countrieslist.domain.usecase.GetCountriesUseCase
+import com.example.countrieslist.data.model.CountriesList
+import com.example.countrieslist.domain.model.CountriesEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class CountriesViewModel (val countriesRepository: CountriesRepository): ViewModel() {
-    val countryLiveData: MutableLiveData<ApiState<CountriesList>> = MutableLiveData()
+class CountriesViewModel (val countriesUseCase: GetCountriesUseCase): ViewModel() {
+    val countryLiveData: MutableLiveData<ApiState<List<CountriesEntity>>> = MutableLiveData()
 
     init {
         getCountryData()
@@ -22,17 +23,15 @@ class CountriesViewModel (val countriesRepository: CountriesRepository): ViewMod
      */
     private fun getCountryData() = viewModelScope.launch(Dispatchers.IO) {
         countryLiveData.postValue(ApiState.Loading())
-        val response = countriesRepository.getCountriesList()
+        val response = countriesUseCase.invoke()
         delay(1000) // just to show progress bar in the ui
         countryLiveData.postValue(handleResponse(response))
     }
 
-    private fun handleResponse(response: Response<CountriesList>): ApiState<CountriesList> {
-        if (response.isSuccessful) {
-            response.body()?.let { resultResponse ->
+    private fun handleResponse(response: List<CountriesEntity>?): ApiState<List<CountriesEntity>> {
+            response?.let { resultResponse ->
                 return ApiState.Success(resultResponse)
             }
-        }
-        return ApiState.Error(response.message(), response.body())
+        return ApiState.Error()
     }
 }

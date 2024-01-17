@@ -1,4 +1,4 @@
-package com.example.countrieslist.model
+package com.example.countrieslist.data.model
 
 data class CountriesListItem(
     val capital: String,

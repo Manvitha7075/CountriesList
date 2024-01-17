@@ -1,4 +1,4 @@
-package com.example.countrieslist.views
+package com.example.countrieslist.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.countrieslist.R
-import com.example.countrieslist.model.CountriesList
+import com.example.countrieslist.data.model.CountriesList
+import com.example.countrieslist.domain.model.CountriesEntity
 
-class CountriesAdapter(val countriesList: CountriesList) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
+class CountriesAdapter(val countriesList: List<CountriesEntity>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val countryName:TextView = itemView.findViewById(R.id.name)
         val countryCode:TextView = itemView.findViewById(R.id.code)
@@ -18,12 +19,12 @@ class CountriesAdapter(val countriesList: CountriesList) : RecyclerView.Adapter<
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CountriesAdapter.ViewHolder {
+    ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.countries_row_layout,parent,false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CountriesAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val countryItem = countriesList[position]
         holder.countryName.setText(countryItem.name + ", "+countryItem.region)
         holder.countryCode.setText(countryItem.code)

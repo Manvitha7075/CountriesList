@@ -1,3 +1,3 @@
-package com.example.countrieslist.model
+package com.example.countrieslist.data.model
 
 class CountriesList : ArrayList<CountriesListItem>()

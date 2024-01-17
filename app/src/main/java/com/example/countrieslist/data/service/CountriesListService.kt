@@ -1,6 +1,6 @@
-package com.example.countrieslist.service
+package com.example.countrieslist.data.service
 
-import com.example.countrieslist.model.CountriesList
+import com.example.countrieslist.data.model.CountriesList
 import retrofit2.Response
 import retrofit2.http.GET
 

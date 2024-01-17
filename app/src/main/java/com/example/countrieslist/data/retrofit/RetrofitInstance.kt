@@ -1,6 +1,6 @@
-package com.example.countrieslist.retrofit
+package com.example.countrieslist.data.retrofit
 
-import com.example.countrieslist.service.CountriesListService
+import com.example.countrieslist.data.service.CountriesListService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
