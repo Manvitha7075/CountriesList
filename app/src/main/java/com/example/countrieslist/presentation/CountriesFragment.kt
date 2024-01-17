@@ -12,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.countrieslist.R
-import com.example.countrieslist.viewmodel.ApiState
-import com.example.countrieslist.viewmodel.CountriesViewModel
-import com.example.countrieslist.viewmodel.CountryViewModelProviderFactory
+import com.example.countrieslist.data.ApiState
+import com.example.countrieslist.presentation.viewmodel.CountriesViewModel
+import com.example.countrieslist.presentation.viewmodel.CountryViewModelProviderFactory
 
 
 class CountriesFragment : Fragment() {

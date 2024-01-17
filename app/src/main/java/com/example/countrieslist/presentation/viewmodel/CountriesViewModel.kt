@@ -1,15 +1,14 @@
-package com.example.countrieslist.viewmodel
+package com.example.countrieslist.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.countrieslist.data.ApiState
 import com.example.countrieslist.domain.usecase.GetCountriesUseCase
-import com.example.countrieslist.data.model.CountriesList
 import com.example.countrieslist.domain.model.CountriesEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class CountriesViewModel (val countriesUseCase: GetCountriesUseCase): ViewModel() {
     val countryLiveData: MutableLiveData<ApiState<List<CountriesEntity>>> = MutableLiveData()

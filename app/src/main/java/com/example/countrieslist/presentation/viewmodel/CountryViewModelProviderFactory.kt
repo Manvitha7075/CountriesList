@@ -1,4 +1,4 @@
-package com.example.countrieslist.viewmodel
+package com.example.countrieslist.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
