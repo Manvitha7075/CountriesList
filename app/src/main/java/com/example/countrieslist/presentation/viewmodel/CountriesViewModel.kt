@@ -24,13 +24,6 @@ class CountriesViewModel (val countriesUseCase: GetCountriesUseCase): ViewModel(
         countryLiveData.postValue(ApiState.Loading())
         val response = countriesUseCase.invoke()
         delay(1000) // just to show progress bar in the ui
-        countryLiveData.postValue(handleResponse(response))
-    }
-
-    private fun handleResponse(response: List<CountriesEntity>?): ApiState<List<CountriesEntity>> {
-            response?.let { resultResponse ->
-                return ApiState.Success(resultResponse)
-            }
-        return ApiState.Error()
+        countryLiveData.postValue(response)
     }
 }

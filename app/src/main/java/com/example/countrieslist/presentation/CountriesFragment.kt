@@ -57,7 +57,7 @@ class CountriesFragment : Fragment() {
                     response.message?.let { message ->
                         Toast.makeText(
                             this.activity,
-                            "Sorry, Something went wrong. Please try again",
+                            message,
                             Toast.LENGTH_LONG
                         ).show()
                     }
