@@ -1,4 +1,4 @@
-package com.example.countrieslist.domain.model
+package com.example.countrieslist.domain.entity
 
 
 /*

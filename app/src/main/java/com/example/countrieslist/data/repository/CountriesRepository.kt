@@ -2,7 +2,7 @@ package com.example.countrieslist.data.repository
 
 import com.example.countrieslist.data.ApiState
 import com.example.countrieslist.domain.mappers.CountriesMapper
-import com.example.countrieslist.domain.model.CountriesEntity
+import com.example.countrieslist.domain.entity.CountriesEntity
 import com.example.countrieslist.data.retrofit.RetrofitInstance
 
 /**
@@ -21,7 +21,7 @@ class CountriesRepositoryImpl : CountriesRepository {
         try {
             val request = RetrofitInstance.api.getCountriesList()
             if (request.isSuccessful) {
-                val countryEntity = request.body()?.let { CountriesMapper.buildFrom(it) }
+                val countryEntity =  CountriesMapper.buildFrom(request.body())
                 return countryEntity?.let { ApiState.Success(countryEntity) }
                     ?: ApiState.Error("Failed to parse response body")
             }

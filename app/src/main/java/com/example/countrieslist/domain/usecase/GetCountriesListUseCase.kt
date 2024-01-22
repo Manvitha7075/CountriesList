@@ -2,7 +2,7 @@ package com.example.countrieslist.domain.usecase
 
 import com.example.countrieslist.data.ApiState
 import com.example.countrieslist.data.repository.CountriesRepository
-import com.example.countrieslist.domain.model.CountriesEntity
+import com.example.countrieslist.domain.entity.CountriesEntity
 
 
 interface GetCountriesUseCase {

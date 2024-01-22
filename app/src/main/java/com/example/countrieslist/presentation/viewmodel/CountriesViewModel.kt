@@ -5,9 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.countrieslist.data.ApiState
 import com.example.countrieslist.domain.usecase.GetCountriesUseCase
-import com.example.countrieslist.domain.model.CountriesEntity
+import com.example.countrieslist.domain.entity.CountriesEntity
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CountriesViewModel (val countriesUseCase: GetCountriesUseCase): ViewModel() {
@@ -22,8 +21,8 @@ class CountriesViewModel (val countriesUseCase: GetCountriesUseCase): ViewModel(
      */
     private fun getCountryData() = viewModelScope.launch(Dispatchers.IO) {
         countryLiveData.postValue(ApiState.Loading())
-        val response = countriesUseCase.invoke()
-        delay(1000) // just to show progress bar in the ui
+        val response = countriesUseCase()
+       // delay(1000) // just to show progress bar in the ui
         countryLiveData.postValue(response)
     }
 }

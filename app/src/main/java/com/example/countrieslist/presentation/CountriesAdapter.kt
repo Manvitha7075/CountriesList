@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.countrieslist.R
-import com.example.countrieslist.data.model.CountriesList
-import com.example.countrieslist.domain.model.CountriesEntity
+import com.example.countrieslist.domain.entity.CountriesEntity
 
 class CountriesAdapter(val countriesList: List<CountriesEntity>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
